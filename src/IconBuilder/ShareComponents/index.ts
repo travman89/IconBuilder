@@ -19,7 +19,7 @@ export const BodyText = styled.div`
 export const Button = styled.button`
   background-color: transparent;
   border-radius: 99px;
-  border-color: #505050;
+  border: 2px solid #505050;
   cursor: pointer;
   margin: 0 auto;
   padding: 10px;
