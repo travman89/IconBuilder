@@ -1,0 +1,66 @@
+{
+  "compilerOptions": {
+    "target": "es2015",
+    "module": "es2015",
+    "moduleResolution": "node",
+    "jsx": "react",
+    "rootDirs": ["src", "stories"],
+    "outDir": "build",
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": false,
+    "preserveConstEnums": true,
+    "allowJs": true,
+    "sourceMap": true,
+    "noImplicitReturns": true,
+    "noUnusedParameters": true,
+    "noUnusedLocals": false,
+    "experimentalDecorators": true,
+    "lib": [
+      "es5",
+      "es6",
+      "dom",
+      "es2015.core",
+      "es2015.collection",
+      "es2015.generator",
+      "es2015.iterable",
+      "es2015.promise",
+      "es2015.proxy",
+      "es2015.reflect",
+      "es2015.symbol",
+      "es2015.symbol.wellknown",
+      "es2016.array.include",
+      "esnext.asynciterable"
+    ],
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "assets/*": ["assets/*"],
+      "constants/*": ["src/constants/*"],
+      "components/*": ["src/components/*"],
+      "utils/*": ["src/utils/*"],
+      "pages/*": ["src/pages/*"],
+      "theme": ["src/theme"],
+      "test/*": ["src/test/*"],
+      "*": ["*"]
+    }
+  },
+  "filesGlob": ["typings/index.d.ts", "src/**/*.ts", "src/**/*.tsx"],
+  "types": ["react", "jest", "cypress"],
+  "exclude": [
+    "assets",
+    "build",
+    "dist",
+    "tests",
+    "coverage",
+    "node_modules",
+    "*.test.ts",
+    "*.test.tsx",
+    "*.stories.tsx"
+  ],
+  "compileOnSave": false,
+  "awesomeTypescriptLoaderOptions": {
+    "forceIsolatedModules": true,
+    "useCache": true,
+    "transpileOnly": true
+  }
+}
