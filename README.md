@@ -5,6 +5,8 @@ The purpose of this project is to get some experience starting a react project f
 [TEST THE DEMO HERE!](http://icon-builder.com.s3-website-us-east-1.amazonaws.com/)
 
 **Note the demo is not responsive. View with a window over 800px wide**
+ ![Demo](https://i.imgur.com/AOh3pjd.png)
+
 ## Build Instructions
 ```yarn && yarn start```
 
