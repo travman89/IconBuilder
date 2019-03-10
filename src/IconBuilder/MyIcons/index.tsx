@@ -16,6 +16,7 @@ type Props = {
 };
 
 const IconBuilder: React.SFC<Props> = ({ setComponent, setEdit }) => {
+  setEdit(null);
   const [myIcons, setMyIcons] = useState(
     JSON.parse(localStorage.getItem("myIcons"))
   );
