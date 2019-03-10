@@ -19,6 +19,7 @@ const PoseItem = posed.div({
 
 type Props = {
   setComponent: () => void;
+  edit: number;
 };
 
 const StyledButton = styled(Button)`
@@ -26,16 +27,26 @@ const StyledButton = styled(Button)`
   margin-top: 40px;
 `;
 
-const IconBuilder: React.SFC<Props> = ({ setComponent }) => {
-  const [iconColor, setIconColor] = useState(null);
-  const [iconImage, setIconImage] = useState(null);
+function checkEdit(edit, key) {
+  if (edit !== null) {
+    return JSON.parse(localStorage.getItem("myIcons"))[edit][key];
+  }
+  return null;
+}
+const IconBuilder: React.SFC<Props> = ({ setComponent, edit }) => {
+  const [iconColor, setIconColor] = useState(checkEdit(edit, "iconColor"));
+  const [iconImage, setIconImage] = useState(checkEdit(edit, "iconImage"));
 
   function assembleIcon() {
     let customIcons = JSON.parse(localStorage.getItem("myIcons"));
     if (!customIcons) {
       customIcons = [];
     }
-    customIcons.push({ iconColor: iconColor, iconImage: iconImage });
+    if (edit !== null) {
+      customIcons[edit] = { iconColor: iconColor, iconImage: iconImage };
+    } else {
+      customIcons.push({ iconColor: iconColor, iconImage: iconImage });
+    }
     localStorage.setItem("myIcons", JSON.stringify(customIcons));
     setComponent("home");
   }
@@ -43,7 +54,7 @@ const IconBuilder: React.SFC<Props> = ({ setComponent }) => {
   return (
     <Container>
       <BodyText>Select a color.</BodyText>
-      <IconRows setIconColor={setIconColor} />
+      <IconRows setIconColor={setIconColor} iconColor={iconColor} />
       <PoseGroup>
         {iconColor && (
           <PoseItem key={"ImageSelect"}>
@@ -51,7 +62,7 @@ const IconBuilder: React.SFC<Props> = ({ setComponent }) => {
               {" "}
               Select an image.
             </BodyText>
-            <ImageRows setIconImage={setIconImage} />
+            <ImageRows setIconImage={setIconImage} iconImage={iconImage} />
           </PoseItem>
         )}
         {iconImage != null && setIconImage && (

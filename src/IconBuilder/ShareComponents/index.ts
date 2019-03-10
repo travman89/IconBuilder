@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  position: relative;
   display: block;
   margin: 0 auto;
   width: 800px;
@@ -23,8 +24,8 @@ export const Button = styled.button`
   cursor: pointer;
   margin: 0 auto;
   padding: 10px;
-  font-size: 18px;
-  width: 200px;
+  font-size: 14px;
+  width: 150px;
   color: #505050;
 
   transition: all 0.15s ease-in-out;

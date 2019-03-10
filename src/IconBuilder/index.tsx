@@ -53,6 +53,7 @@ const Separator = styled.div`
 
 const IconBuilder: React.SFC = () => {
   const [component, setComponent] = useState("home");
+  const [edit, setEdit] = useState(null);
   return (
     <AppContainer>
       <Heading>Icon Builder</Heading>
@@ -60,12 +61,12 @@ const IconBuilder: React.SFC = () => {
       <PoseGroup>
         {component === "home" && (
           <PoseItem1 key={"MyIcons"}>
-            <MyIcons setComponent={setComponent} />
+            <MyIcons setComponent={setComponent} setEdit={setEdit} />
           </PoseItem1>
         )}
         {component === "builder" && (
           <PoseItem2 key={"Builder"}>
-            <Builder setComponent={setComponent} />
+            <Builder setComponent={setComponent} edit={edit} />
           </PoseItem2>
         )}
       </PoseGroup>

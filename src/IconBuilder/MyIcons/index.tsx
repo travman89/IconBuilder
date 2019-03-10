@@ -2,16 +2,30 @@ import React, { useState } from "react";
 import { Container, BodyText, Button } from "../ShareComponents";
 import { imageList } from "../constants/images";
 import { colors } from "../constants/colors";
-import { CombinedIcon, ButtonContainer, MyIconRow } from "./MyIconsComponents";
+import {
+  CombinedIcon,
+  ButtonContainer,
+  MyIconRow,
+  EditContainer
+} from "./MyIconsComponents";
+import { PoseGroup } from "react-pose";
 
 type Props = {
   setComponent: () => void;
+  setEdit: () => void;
 };
 
-const IconBuilder: React.SFC<Props> = ({ setComponent }) => {
+const IconBuilder: React.SFC<Props> = ({ setComponent, setEdit }) => {
   const [myIcons, setMyIcons] = useState(
     JSON.parse(localStorage.getItem("myIcons"))
   );
+  const [selected, setSelected] = useState(null);
+
+  const editButtonPush = () => {
+    setEdit(selected);
+    setComponent("builder");
+  };
+
   return (
     <Container>
       <>
@@ -21,13 +35,18 @@ const IconBuilder: React.SFC<Props> = ({ setComponent }) => {
             <MyIconRow>
               {myIcons.map((icon, i) => (
                 <div key={i}>
-                  <CombinedIcon color={colors[icon.iconColor]}>
+                  <CombinedIcon
+                    color={colors[icon.iconColor]}
+                    selected={selected === i}
+                    onBlur={() => setSelected(null)}
+                    onClick={() => setSelected(i)}
+                  >
                     <img src={imageList[icon.iconImage]} />
                   </CombinedIcon>
                 </div>
               ))}
             </MyIconRow>
-            <ButtonContainer>
+            <ButtonContainer selected={selected !== null}>
               <Button onClick={() => setComponent("builder")}>
                 Create Another!
               </Button>
@@ -50,6 +69,13 @@ const IconBuilder: React.SFC<Props> = ({ setComponent }) => {
           </>
         )}
       </>
+      <PoseGroup>
+        {selected !== null && (
+          <EditContainer key={"edit_button"}>
+            <Button onClick={editButtonPush}>Edit Icon</Button>
+          </EditContainer>
+        )}
+      </PoseGroup>
     </Container>
   );
 };

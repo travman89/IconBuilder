@@ -13,7 +13,7 @@ const ColorCircle = styled.button`
   width: 50px;
   height: 50px;
   border-radius: 99px;
-  margin: 5px 20px;
+  margin: 8px 20px;
   cursor: pointer;
   background-color: ${props => props.color};
   border: 2px solid ${props => (props.selected ? "#505050" : props.color)};
@@ -21,11 +21,7 @@ const ColorCircle = styled.button`
   transition: all 0.25s ease-in-out;
   &:hover {
     box-shadow: rgba(80, 80, 80, 0.13) 0px 2px 2px 0px;
-    margin-top: ${props => (props.selected ? "5px" : "2px")};
-  }
-
-  &:active {
-    transform: scale(0.98);
+    transform: scale(1.1);
   }
 
   &:focus {
@@ -35,10 +31,11 @@ const ColorCircle = styled.button`
 
 type Props = {
   setIconColor: () => void;
+  iconColor: string;
 };
 
-const ColorRows: React.SFC<Props> = ({ setIconColor }) => {
-  const [selected, setSelected] = useState(null);
+const ColorRows: React.SFC<Props> = ({ setIconColor, iconColor }) => {
+  const [selected, setSelected] = useState(iconColor);
 
   function circleClicked(color: string) {
     setSelected(color);

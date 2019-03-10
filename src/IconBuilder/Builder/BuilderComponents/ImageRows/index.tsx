@@ -44,10 +44,11 @@ const ImageButton = styled.button`
 
 type Props = {
   setIconImage: () => void;
+  iconImage: number;
 };
 
-const ImageRows: React.SFC<Props> = ({ setIconImage }) => {
-  const [selected, setSelected] = useState(null);
+const ImageRows: React.SFC<Props> = ({ setIconImage, iconImage }) => {
+  const [selected, setSelected] = useState(iconImage);
 
   function imageClicked(image: number) {
     setSelected(image);
