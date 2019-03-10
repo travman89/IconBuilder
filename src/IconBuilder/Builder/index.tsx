@@ -27,6 +27,12 @@ const StyledButton = styled(Button)`
   margin-top: 40px;
 `;
 
+const DeleteContainer = styled.div`
+  top: 40px;
+  right: 100px;
+  position: absolute;
+`;
+
 function checkEdit(edit, key) {
   if (edit !== null) {
     return JSON.parse(localStorage.getItem("myIcons"))[edit][key];
@@ -51,6 +57,13 @@ const IconBuilder: React.SFC<Props> = ({ setComponent, edit }) => {
     setComponent("home");
   }
 
+  function deleteIcon() {
+    let customIcons = JSON.parse(localStorage.getItem("myIcons"));
+    customIcons.splice(edit, 1);
+    localStorage.setItem("myIcons", JSON.stringify(customIcons));
+    setComponent("home");
+  }
+
   return (
     <Container>
       <BodyText>Select a color.</BodyText>
@@ -71,6 +84,11 @@ const IconBuilder: React.SFC<Props> = ({ setComponent, edit }) => {
           </PoseItem>
         )}
       </PoseGroup>
+      {edit !== null && (
+        <DeleteContainer>
+          <Button onClick={deleteIcon}>Delete Icon</Button>
+        </DeleteContainer>
+      )}
     </Container>
   );
 };

@@ -51,8 +51,7 @@ export const EditButtonAnimation = posed.div({
     opacity: 1,
     x: 0,
     transition: {
-      opacity: { ease: [0.0, 0.25, 0.5, 1] },
-      x: { ease: [0.0, 0.25, 0.5, 1] },
+      x: { type: "spring", stiffness: 300, damping: 25 },
       default: { duration: 200 }
     }
   },
@@ -60,8 +59,7 @@ export const EditButtonAnimation = posed.div({
     x: 100,
     opacity: 0,
     transition: {
-      opacity: { ease: [0.0, 0.25, 0.5, 1] },
-      x: { ease: [0.0, 0.25, 0.5, 1] },
+      x: { type: "spring", stiffness: 300, damping: 25 },
       default: { duration: 200 }
     }
   }

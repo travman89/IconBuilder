@@ -56,7 +56,7 @@ const IconBuilder: React.SFC<Props> = ({ setComponent, setEdit }) => {
         )}
       </>
       <>
-        {!myIcons && (
+        {(!myIcons || myIcons.length === 0) && (
           <>
             <BodyText>
               It Doesn't look like you have any Icons. Click below to get
